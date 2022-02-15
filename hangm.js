@@ -170,11 +170,37 @@ document.addEventListener("click", (e) => {
             //add Class Wrong On The Draw Element
             theDraw.classList.add(`wrong-${wrongAttempts}`);
 
+            //play Fail Sound
+            document.getElementById("fail").play();
+
+            if (wrongAttempts === 8) {
+                endGame();
+                lettersContainer.classList.add("finished");
+            }
+
+        } else {
+
+            //play sucess sound
+            document.getElementById("success").play();
+
+
         }
+
+
 
     }
 
 });
+//End Game Function
+function endGame() {
+    let div = document.createElement("div");
+    let divText = document.createTextNode(`Game Over , the world Is ${randomValueValue}`);
+    div.appendChild(divText);
+    div.className = 'popup';
+
+    document.body.appendChild(div);
+
+}
 
 
 
