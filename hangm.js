@@ -94,6 +94,14 @@ lettersAndSpace.forEach(letter => {
 
 });
 
+//Select Guess Spans
+let guessSpans = document.querySelectorAll(".letters-guess span");
+
+
+//set The Choose Status
+let theStatus = false;
+
+
 //Handle Clicking on Letters
 document.addEventListener("click", (e) => {
 
@@ -104,16 +112,35 @@ document.addEventListener("click", (e) => {
         // Get Cliked Letter
         let theClickedLetter = e.target.innerHTML.toLowerCase();
 
-        console.log(lettersAndSpace); //the Chosen Word
-        //alexander  ==> ['A','L','E','X','A','N','D','R','E]
+        // console.log(lettersAndSpace); //the Chosen Word
+        // //alexander  ==> ['A','L','E','X','A','N','D','R','E]
 
 
-        lettersAndSpace.forEach((wordLetter, index) => {
+        //The Chosen Word
+        // ['a','l','e','x','a','n','d','r','e']
+        let theChosenWord = Array.from(randomValueValue.toLowerCase());
+
+
+
+
+        theChosenWord.forEach((wordLetter, WordIndex) => {
 
             //If The Clicked Letter Equal To One Of The Chosen Word Letter
 
             if (theClickedLetter == wordLetter) {
-                console.log(`Found At Index Number ${index}`);
+
+                theStatus = true;
+
+                //Loop on All Guess Spans
+                guessSpans.forEach((span, spanIndex) => {
+
+                    if (WordIndex === spanIndex) {
+
+                        span.innerHTML = theClickedLetter;
+
+                    }
+                });
+
             }
 
 
