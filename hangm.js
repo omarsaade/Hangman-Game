@@ -1,4 +1,5 @@
 //letters
+//Create Keyborad
 const letters = "abcdefghijklmnopqrstuvwxyz";
 
 //Get Array From Letters
@@ -28,6 +29,11 @@ lettersArray.forEach(letter => {
     lettersContainer.appendChild(span);
 });
 
+/////////////////// 
+
+
+
+
 //Object of Words + Categories
 const words = {
     programming: ["php", "javascript", "go", "scala", "fortran", "r", "mysql", "python"],
@@ -38,8 +44,9 @@ const words = {
 
 //Get Random Property
 //bta3tik random keys;
-//    [programming , movies ,people , countries]
+
 let allkeys = Object.keys(words);
+// (4) ['programming', 'movies', 'people', 'countries']
 
 //Random Number Depend On Keys Length
 
@@ -97,13 +104,18 @@ lettersAndSpace.forEach(letter => {
 //Select Guess Spans
 let guessSpans = document.querySelectorAll(".letters-guess span");
 
+//set Wrong Attempts
 
-//set The Choose Status
-let theStatus = false;
+let wrongAttempts = 0;
+
+//Select the draw element
+let theDraw = document.querySelector(".hangman-draw");
 
 
 //Handle Clicking on Letters
 document.addEventListener("click", (e) => {
+    //set The Choose Status
+    let theStatus = false;
 
     if (e.target.className === 'letter-box') {
 
@@ -127,11 +139,14 @@ document.addEventListener("click", (e) => {
 
             //If The Clicked Letter Equal To One Of The Chosen Word Letter
 
+
             if (theClickedLetter == wordLetter) {
+                //check if there is a similiar letter in the array (the chosen word)
 
                 theStatus = true;
 
                 //Loop on All Guess Spans
+                //Arrange letter on span tahet
                 guessSpans.forEach((span, spanIndex) => {
 
                     if (WordIndex === spanIndex) {
@@ -145,6 +160,17 @@ document.addEventListener("click", (e) => {
 
 
         });
+        //outside loop
+        // if letter is wrong 
+        if (theStatus !== true) {
+
+            //increase The Wrong Attempts
+            wrongAttempts++;
+
+            //add Class Wrong On The Draw Element
+            theDraw.classList.add(`wrong-${wrongAttempts}`);
+
+        }
 
     }
 
