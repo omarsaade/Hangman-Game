@@ -68,7 +68,30 @@ let randomValueValue = randomPropValue[randomValueNumber];
 
 
 //set Category Info
+//people aw programmming or....
 document.querySelector(".game-info .category span").innerHTML = randomPropName;
 
+//Select Letters Guess Element
+let lettersGuessContainer = document.querySelector(".letters-guess");
+
+//Convert Chosen Word To Array
+//alexander  ==> ['A','L','E','X','A','N','D','R','E]
+let lettersAndSpace = Array.from(randomValueValue);
+
+//Create Spans Depend On Word
+lettersAndSpace.forEach(letter => {
+    //Create Empty Span
+    let emptySpan = document.createElement("span");
+
+    // if Letter Is Space
+    if (letter === ' ') {
+        //add Class To The Span
+        emptySpan.className = 'with-space';
+    }
+    //Append Span to The Letters Guess Container
+    lettersGuessContainer.appendChild(emptySpan);
+
+
+});
 
 
