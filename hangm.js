@@ -94,4 +94,36 @@ lettersAndSpace.forEach(letter => {
 
 });
 
+//Handle Clicking on Letters
+document.addEventListener("click", (e) => {
+
+    if (e.target.className === 'letter-box') {
+
+        e.target.classList.add("clicked");
+
+        // Get Cliked Letter
+        let theClickedLetter = e.target.innerHTML.toLowerCase();
+
+        console.log(lettersAndSpace); //the Chosen Word
+        //alexander  ==> ['A','L','E','X','A','N','D','R','E]
+
+
+        lettersAndSpace.forEach((wordLetter, index) => {
+
+            //If The Clicked Letter Equal To One Of The Chosen Word Letter
+
+            if (theClickedLetter == wordLetter) {
+                console.log(`Found At Index Number ${index}`);
+            }
+
+
+        });
+
+    }
+
+});
+
+
+
+
 
